@@ -4,7 +4,7 @@
   "description": "A simple blog build with React/Redux",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "cd api/src/ && nodemon server.js",
+    "start": "cd api/ && nodemon server.js",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
