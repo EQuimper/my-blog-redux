@@ -9,9 +9,9 @@ module.exports = (req, res) => {
 					error: 'Post not found!'
 				});
 		res
-			.json({
+			.json(
 				post
-			})
+			)
 			.status(200);
 	});
 };

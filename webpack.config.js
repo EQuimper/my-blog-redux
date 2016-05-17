@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let devFlagPlugin = new webpack.DefinePlugin({
@@ -10,7 +9,7 @@ let devFlagPlugin = new webpack.DefinePlugin({
 module.exports = {
 	devtool: 'inline-sourcemap',
 	entry: [
-		'.app/src/js/index.js'
+		'./app/src/js/index.js'
 	],
 	output: {
 		path: path.join(__dirname, 'app/build'),
@@ -18,7 +17,6 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	devServer: {
-		contentBase: path.resolve(ROOT_PATH, 'app/build'),
 		historyApiFallback: true,
 		hot: true,
 		inline: true,
@@ -28,14 +26,11 @@ module.exports = {
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
-		new HtmlwebpackPlugin({
-			title: 'Coding World Blog'
-		}),
 		devFlagPlugin
 	],
 	module: {
 		loaders: [
-			{ test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
+			{ test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ }
 		]
-	},
+	}
 };

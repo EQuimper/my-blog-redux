@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "cd api/ && nodemon server.js",
+    "watch": "webpack --watch",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
@@ -35,6 +36,8 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "redux": "^3.5.2",
+    "redux-promise-middleware": "^3.0.0",
+    "superagent": "^1.8.3",
     "webpack": "^1.13.0"
   },
   "devDependencies": {
