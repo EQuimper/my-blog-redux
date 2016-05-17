@@ -24,12 +24,27 @@ export const fetchPost = (id) => {
 			.get(`/api/posts/${id}`)
 			.end((err, res) => {
 				if ( err )
-					reject( err );
-				resolve( res.body );
+					reject(err);
+				resolve(res.body);
 			});
 	});
 	return {
 		type: types.FETCH_POST,
 		payload: promise
+	};
+};
+
+export const addPost = (title, content) => {
+	request
+		.post(`/api/post`)
+		.end((err, res) => {
+			if (err)
+				res.send('Can\'t created the post!');
+			res.send().json(post);
+		});
+	return {
+		type: types.ADD_POST,
+		title,
+		content
 	};
 };

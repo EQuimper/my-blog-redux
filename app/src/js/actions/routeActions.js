@@ -1,6 +1,7 @@
 import {
 	fetchPosts,
-	fetchPost
+	fetchPost,
+	addPost
 } from './postActions';
 
 export const boundAllPosts = (nextState, replaceState) => {
@@ -9,4 +10,8 @@ export const boundAllPosts = (nextState, replaceState) => {
 
 export const boundOnePost = (nextState, replaceState) => {
 	return fetchPost(nextState.params.id);
+};
+
+export const boundAddPost = (nextState, replaceState) => {
+	return addPost(nextState + post);
 };
