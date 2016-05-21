@@ -23,7 +23,7 @@ export const fetchPost = (id) => {
 		request
 			.get(`/api/posts/${id}`)
 			.end((err, res) => {
-				if ( err )
+				if (err)
 					reject(err);
 				resolve(res.body);
 			});
@@ -34,17 +34,19 @@ export const fetchPost = (id) => {
 	};
 };
 
-export const addPost = (title, content) => {
-	request
-		.post(`/api/post`)
-		.end((err, res) => {
-			if (err)
-				res.send('Can\'t created the post!');
-			res.send().json(post);
-		});
+export const addPost = (data) => {
+	const promise = new Promise((resolve, reject) => {
+		request
+			.post(`/api/posts`)
+			.send(data)
+			.end((err, res) => {
+				if (err)
+					reject(err);
+				resolve(res.body);
+			});
+	});
 	return {
 		type: types.ADD_POST,
-		title,
-		content
+		payload: promise
 	};
 };
