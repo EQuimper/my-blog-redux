@@ -1,14 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Radium from 'radium';
+
+import { bindActionCreators } from 'redux';
+// import { addPost } from '../actions/postActions';
+
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import { reduxForm } from 'redux-form';
 
+import {addPost} from '../actions/postActions';
+
 class NewPost extends React.Component {
+	// handleSubmit(data) {
+	// 	debugger;
+	// 	console.log(data);
+	//
+	// 	// setTimeout(() => this.setState({post: true}), 2000);
+	//
+	// }
 	render() {
 		const {fields: {title, content}, handleSubmit} = this.props;
+		// debugger;
 		return (
 			<div>
 				<h1 style={styles.base}>Add new Post</h1>
@@ -38,14 +52,15 @@ class NewPost extends React.Component {
 	}
 }
 
+const mapActionCreatorsToProps = (dispatch) => bindActionCreators({onSubmit: addPost}, dispatch);
+
 NewPost = reduxForm({
 	form: 'post',
-	fields: ['title', 'content']
+	fields: ['title', 'content'],
+	onSubmit: addPost
 })(NewPost);
 
-
-
-export default connect(state => ({post: state.post}))(Radium(NewPost));
+export default connect(null, mapActionCreatorsToProps)(NewPost);
 
 let styles = {
 	base: {
