@@ -9,7 +9,7 @@ let devFlagPlugin = new webpack.DefinePlugin({
 module.exports = {
 	devtool: 'inline-sourcemap',
 	entry: [
-		'./app/src/js/index.js'
+		'./app/src/js/index'
 	],
 	output: {
 		path: path.join(__dirname, 'app/build'),
